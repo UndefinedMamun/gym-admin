@@ -382,7 +382,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1 style="display: inline-block;">
-            Add Employee
+            New Workout
       </h1>
 
     </section>
@@ -397,43 +397,35 @@
                         <form role="form">
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="clientName">Name</label>
-                                    <input type="text" class="form-control" id="clientName" placeholder="Employee Name">
+                                  <label for="exampleInputEmail1">Item Name</label>
+                                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Item Name">
                                 </div>
                                 <div class="form-group">
-                                    <label for="clientUserName">User Name</label>
-                                    <input type="text" class="form-control" id="clientUserName" placeholder="Employee User Name">
+                                    <label for="times">Times</label>
+                                    <input type="number" min="1" class="form-control" id="times" placeholder="Times">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Email</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Email">
+                                    <label for="repeat">Repeats</label>
+                                    <input type="number" min="1" class="form-control" id="repeat" placeholder="Repeats">
                                 </div>
                                 <div class="form-group">
-                                    <label>Date of Birth</label>
-                    
-                                    <div class="input-group date">
-                                        <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                        </div>
-                                        <input type="text" class="form-control pull-right datepicker">
-                                    </div>
-                                    <!-- /.input group -->
+                                    <label for="intervals">Intervals</label>
+                                    <input type="number" min="1" class="form-control" id="intervals" placeholder="Intervals">
                                 </div>
+            
                                 <div class="form-group">
-                                    <label for="clientNID">NID</label>
-                                    <input type="number" class="form-control" id="clientNID" placeholder="NID">
+                                    <label for="iName">Instrument Name</label>
+                                    <input type="text" class="form-control" id="iName" placeholder="Instrument Name">
                                 </div>
+            
                                 <div class="form-group">
-                                    <label for="clientPhone">Phone</label>
-                                    <input type="text" class="form-control" id="clientPhone" placeholder="Enter Phone number">
+                                    <label for="iWeight">Instrument Weight</label>
+                                    <input type="intervals" min="1" class="form-control" id="iWeight" placeholder="Instrument Weight">
                                 </div>
+            
+                                
                                 <div class="form-group">
-                                    <label for="clientAddress">Address</label>
-                                    <textarea name="clientAddress" class="form-control" id="clientAddress" cols="30" rows="10"></textarea>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Designation</label>
+                                    <label>Client</label>
                                     <select class="form-control select2" style="width: 100%;">
                                         <option selected="selected">Omuk</option>
                                         <option>Tomuk</option>
@@ -441,12 +433,10 @@
                                         <option>Faltu</option>
                                     </select>
                                 </div>
-                                
                             </div>
-                            <!-- /.box-body -->
                 
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-success"> <i class="fa fa-plus"></i> &nbsp; Add Employee</button>
+                                <button type="submit" class="btn btn-success"> <i class="fa fa-plus"></i> &nbsp; Add Workout</button>
                                 
                             </div>
                         </form>
@@ -675,8 +665,8 @@
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <!-- Select2 -->
 <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
-<!-- bootstrap datepicker -->
-<script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- bootstrap time picker -->
+<script src="plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
@@ -684,14 +674,11 @@
 <!-- page script -->
 <script>
     $(function () {
-    //Initialize Select2 Elements
-    $('.select2').select2();
-    //Date picker
-    $('.datepicker').datepicker({
-      autoclose: true
-    })
+        
+        //Initialize Select2 Elements
+        $('.select2').select2();
     
-  })
+    })
 </script>
 </body>
 </html>
