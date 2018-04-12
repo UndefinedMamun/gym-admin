@@ -3,7 +3,47 @@ $(document).ready(function() {
     $('#example1').DataTable({
       dom: 'Bfrtip',
       buttons: [
-          'copy', 'csv', 'excel', 'pdf', 'print'
+          {
+            extend: 'excel',
+            text: 'Excel',
+            exportOptions: {
+                columns: 'th:not(:last-child)'
+            }
+          },
+          {
+            extend: 'copy',
+            text: 'Copy',
+            exportOptions: {
+                columns: 'th:not(:last-child)'
+            }
+          },
+          {
+            extend: 'csv',
+            text: 'CSV',
+            exportOptions: {
+                columns: 'th:not(:last-child)'
+            }
+          },
+          {
+            extend: 'pdf',
+            text: 'PDF',
+            exportOptions: {
+                columns: 'th:not(:last-child)'
+            }
+          },
+          {
+            extend: 'print',
+            text: 'Print',
+            exportOptions: {
+                columns: 'th:not(:last-child)'
+            },
+            customize: function ( win ) {
+                $(win.document.body)
+                    .prepend(
+                        '<h4 style="position:absolute; right:0; bottom:0;">Developed by Microkodes</h4>'
+                    );
+            }
+          }
       ]
     });
 
