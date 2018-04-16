@@ -61,6 +61,16 @@ $(document).ready(function() {
     $('.select2').select2();
 
 
+    //Billings client Behaviour
+    $('#billings-client').on('change', function(e){
+        if(e.target.value == 0)
+            $('#client-info').css('display', 'none');
+        else
+            $('#client-info').css('display', 'block');
+        
+    })
+
+
     //Advanced Payment fields toggle
     $('#apCheckbox').change(function(e){
         if(this.checked)
