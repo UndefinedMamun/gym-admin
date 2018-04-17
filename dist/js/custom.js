@@ -62,11 +62,11 @@ $(document).ready(function() {
 
 
     //Billings client Behaviour
-    $('#billings-client').on('change', function(e){
+    $('#onChange').on('change', function(e){
         if(e.target.value == 0)
-            $('#client-info').css('display', 'none');
+            $('#onChangeInfo').css('display', 'none');
         else
-            $('#client-info').css('display', 'block');
+            $('#onChangeInfo').css('display', 'block');
         
     })
 
