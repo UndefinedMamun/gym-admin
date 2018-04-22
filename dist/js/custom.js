@@ -73,10 +73,17 @@ $(document).ready(function() {
 
     //Advanced Payment fields toggle
     $('#apCheckbox').change(function(e){
-        if(e.target.value != 0)
+        if(e.target.value == 2){
             $('#advance-payments-ops').css('display', 'block');
-        else
+            $('#normal-payment-ops').css('display', 'none');
+        }
+        else if(e.target.value == 1){
             $('#advance-payments-ops').css('display', 'none');
+            $('#normal-payment-ops').css('display', 'block');
+        } else{
+            $('#advance-payments-ops').css('display', 'none');
+            $('#normal-payment-ops').css('display', 'none');
+        }
     });
 
 
