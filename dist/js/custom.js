@@ -73,7 +73,7 @@ $(document).ready(function() {
 
     //Advanced Payment fields toggle
     $('#apCheckbox').change(function(e){
-        if(this.checked)
+        if(e.target.value != 0)
             $('#advance-payments-ops').css('display', 'block');
         else
             $('#advance-payments-ops').css('display', 'none');

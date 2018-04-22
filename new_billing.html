@@ -418,62 +418,75 @@
                                   <input type="text" disabled class="form-control">
                               </div>
                             </div>
+
+                            <div class="form-group">
+                              <label>Payment Type</label>
+                              <select id="apCheckbox" class="form-control" style="width: 100%;">
+                                  <option value="0" selected="selected">Normal</option>
+                                  <option value="1">Advanced</option>
+                              </select>
+                            </div>
+
+                            <div id="advance-payments-ops" style="display: none;">
+                              <div class="form-group">
+                                  <label>Month From</label>
+                  
+                                  <div class="input-group date">
+                                      <div class="input-group-addon">
+                                      <i class="fa fa-calendar"></i>
+                                      </div>
+                                      <input type="text" class="form-control pull-right datepicker">
+                                  </div>
+                                  <!-- /.input group -->
+                              </div>
+      
+                              <div class="form-group">
+                                  <label>Month To</label>
+                  
+                                  <div class="input-group date">
+                                      <div class="input-group-addon">
+                                      <i class="fa fa-calendar"></i>
+                                      </div>
+                                      <input type="text" class="form-control pull-right datepicker" >
+                                  </div>
+                                  <!-- /.input group -->
+                              </div>
+      
+                              <div class="form-group">
+                                  <label for="monthCount">Month Count</label>
+                                  <input type="number" min="1" class="form-control" id="monthCount" placeholder="Month Count">
+                              </div>
+                              <div class="form-group">
+                                <label for="amount">Aomunt</label>
+                                <input type="number" min="1" class="form-control" id="amount" placeholder="Amount">
+                              </div>
+                            </div>
         
                             <div class="form-group">
                               <label for="amount">Aomunt</label>
                               <input type="number" min="1" class="form-control" id="amount" placeholder="Amount">
                             </div>
+
                             <div class="form-group">
-                              <label>Dropdown</label>
+                              <label>Payment Method</label>
                               <select class="form-control">
                                   <option>Dew</option>
                                   <option>Paid</option>
                               </select>
                              </div>
-        
-                            <div class="form-group">
-                                <label>
-                                  <input type="checkbox" id="apCheckbox" class="flat-red">
-                                  Advanced Payment
-                                </label>
+                             
+                             <div class="form-group">
+                              <label>Branch</label>
+                              <select class="form-control select2" style="width: 100%;">
+                                  <option value="0" selected="selected">Select</option>
+                                  <option value="1">Omuk</option>
+                                  <option value="2">Tomuk</option>
+                                  <option value="3">Altu</option>
+                                  <option value="4">Faltu</option>
+                              </select>
                             </div>
         
                             
-        
-                            <div id="advance-payments-ops" style="display: none;">
-                                <div class="form-group">
-                                    <label>Month From</label>
-                    
-                                    <div class="input-group date">
-                                        <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                        </div>
-                                        <input type="text" class="form-control pull-right datepicker">
-                                    </div>
-                                    <!-- /.input group -->
-                                </div>
-        
-                                <div class="form-group">
-                                    <label>Month To</label>
-                    
-                                    <div class="input-group date">
-                                        <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                        </div>
-                                        <input type="text" class="form-control pull-right datepicker" >
-                                    </div>
-                                    <!-- /.input group -->
-                                </div>
-        
-                                <div class="form-group">
-                                    <label for="monthCount">Month Count</label>
-                                    <input type="number" min="1" class="form-control" id="monthCount" placeholder="Month Count">
-                                </div>
-                                <div class="form-group">
-                                  <label for="amount">Aomunt</label>
-                                  <input type="number" min="1" class="form-control" id="amount" placeholder="Amount">
-                                </div>
-                            </div>
         
                             
                             
