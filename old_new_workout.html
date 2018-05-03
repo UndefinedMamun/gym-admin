@@ -425,19 +425,19 @@
                                     <div class="col-md-8">
                                         <div class="input-group">
                                             <label>
-                                                <input class="flat-red" type="radio" value="10*2" name="set"> 10*2
+                                                <input class="set-radio" type="radio" value="10*2" name="dumble-set"> 10*2
                                             </label>
                                             <label>
-                                                <input class="flat-red" type="radio" value="10*3" name="set"> 10*3
+                                                <input class="set-radio" type="radio" value="10*3" name="dumble-set"> 10*3
                                             </label>
                                             <label>
-                                                <input class="flat-red"type="radio" value="10*4" name="set"> 10*4
+                                                <input class="set-radio"type="radio" value="10*4" name="dumble-set"> 10*4
                                             </label>
                                             <label>
-                                                <input class="flat-red"type="radio" value="10*5" name="set"> 10*5
+                                                <input class="set-radio"type="radio" value="10*5" name="dumble-set"> 10*5
                                             </label>
                                             <label>
-                                                <input class="flat-red"type="radio" value="10*6" name="set"> 10*6
+                                                <input class="set-radio"type="radio" value="10*6" name="dumble-set"> 10*6
                                             </label>
                                         </div>
                                     </div>
@@ -451,19 +451,19 @@
                                     <div class="col-md-8">
                                         <div class="input-group">
                                             <label>
-                                                <input class="flat-red" type="radio" value="10*2" name="set"> 10*2
+                                                <input class="set-radio" type="radio" value="10*2" name="somthing-set"> 10*2
                                             </label>
                                             <label>
-                                                <input class="flat-red" type="radio" value="10*3" name="set"> 10*3
+                                                <input class="set-radio" type="radio" value="10*3" name="somthing-set"> 10*3
                                             </label>
                                             <label>
-                                                <input class="flat-red"type="radio" value="10*4" name="set"> 10*4
+                                                <input class="set-radio"type="radio" value="10*4" name="somthing-set"> 10*4
                                             </label>
                                             <label>
-                                                <input class="flat-red"type="radio" value="10*5" name="set"> 10*5
+                                                <input class="set-radio"type="radio" value="10*5" name="somthing-set"> 10*5
                                             </label>
                                             <label>
-                                                <input class="flat-red"type="radio" value="10*6" name="set"> 10*6
+                                                <input class="set-radio"type="radio" value="10*6" name="somthing-set"> 10*6
                                             </label>
                                         </div>
                                     </div>
@@ -477,19 +477,19 @@
                                     <div class="col-md-8">
                                         <div class="input-group">
                                             <label>
-                                                <input class="flat-red" type="radio" value="10*2" name="set"> 10*2
+                                                <input class="set-radio" type="radio" value="10*2" name="anything-set"> 10*2
                                             </label>
                                             <label>
-                                                <input class="flat-red" type="radio" value="10*3" name="set"> 10*3
+                                                <input class="set-radio" type="radio" value="10*3" name="anything-set"> 10*3
                                             </label>
                                             <label>
-                                                <input class="flat-red"type="radio" value="10*4" name="set"> 10*4
+                                                <input class="set-radio"type="radio" value="10*4" name="anything-set"> 10*4
                                             </label>
                                             <label>
-                                                <input class="flat-red"type="radio" value="10*5" name="set"> 10*5
+                                                <input class="set-radio"type="radio" value="10*5" name="anything-set"> 10*5
                                             </label>
                                             <label>
-                                                <input class="flat-red"type="radio" value="10*6" name="set"> 10*6
+                                                <input class="set-radio"type="radio" value="10*6" name="anything-set"> 10*6
                                             </label>
                                         </div>
                                     </div>
@@ -565,6 +565,7 @@
 
 <!-- jQuery 3 -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- DataTables -->
@@ -609,21 +610,41 @@
 
     $('input[type="checkbox"]').on('change', function(){
         let name = this.name;
-        // let value = this.value;
+        // let value = this.html();
         // console.log(value);
+        let item = {name};
+
+        let set = $(`input[name='${name}-set']:checked`).val();
+
+        // console.log(set);
+        if(set)
+          item.set = set;
 
         if(this.checked){
-            items.push({name});
-        } else {
+            items.push(item);
+        } else {name
             let index = items.findIndex(el => el.name === name);
             items.splice(index,1);
             // console.log(index);
         }
 
-        // console.log(items);
-        constructTbody();
-
         
+        constructTbody();
+        
+    })
+    null
+    $('input[type="radio"].set-radio').on('change', function(){
+      
+      let name = this.name;
+      name = name.split('-')[0];
+
+      let isChecked = $(`input[type='checkbox'][name='${name}']`).is(':checked');
+      if(isChecked){
+        let index = items.findIndex(el => el.name === name);
+        items[index].set = this.value;
+      }
+      constructTbody();
+      // console.log(isChecked);
     })
 
     function deleteItem (index) {
@@ -643,10 +664,10 @@
         tbody.empty();
         items.forEach((item, i)=>{
             string = `
-                    <tr>
+                    <tr id='${item.name}-row'>
                         <th scope="row">${i+1}</th>
-                        <td>${item.name}</td>
-                        <td>null</td>
+                        <td id='${item.name}-tdata'>${item.name}</td>
+                        <td id='${item.name}-setdata'>${item.set ? item.set : 'N/A'}</td>
                         <td>
                             <button class="btn btn-danger" onClick="deleteItem(${i})">Delete</button>
                         </td>
@@ -655,6 +676,27 @@
             tbody.append(string);
             // console.log(item.name, i);
         });
+
+        $(tbody).sortable({
+          placeholder: 'ui-state-highlight',
+          update: function(e, ui){
+            let each = e.target.children;
+            items = [];
+            
+            Array.from(each).forEach(function(tr){
+              let name = tr.id.split('-')[0];
+
+              let set = $(`#${name}-setdata`).html();
+              set = set == 'N/A' ? null : set;
+              items.push({name, set});
+              // console.log(set)
+            });
+
+            constructTbody();
+            
+          }
+        })
+        $(tbody).disableSelection();
     }
 
 
