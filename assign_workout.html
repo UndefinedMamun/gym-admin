@@ -8,6 +8,8 @@
                 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
                 <!-- Bootstrap 3.3.7 -->
                 <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+                <!-- Material Bootstrap -->
+                <link rel="stylesheet" href="dist/css/mdb.min.css">
                 <!-- Font Awesome -->
                 <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
                 <!-- Ionicons -->
@@ -39,7 +41,131 @@
                 <!-- Google Font -->
                 <link rel="stylesheet"
                       href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-              </head>
+                  <style>
+                    .form-check {
+                        position: relative;
+                        display: block;
+                        padding-left: 1.25rem;
+                    }
+                    .form-check-input {
+                        position: absolute;
+                        margin-top: .3rem;
+                        margin-left: -1.25rem;
+                    }
+                    
+                    [type=checkbox] {
+                        position: absolute;
+                        left: -9999px;
+                        visibility: hidden;
+                    }
+
+                    input[type=checkbox]{
+                        box-sizing: border-box;
+                        padding: 0;
+                    }
+                    [type=checkbox]+label {
+                        position: relative;
+                        padding-left: 35px;
+                        cursor: pointer;
+                        display: inline-block;
+                        height: 25px;
+                        line-height: 25px;
+                        border-color: #fff;
+                    }
+
+                    table td, table th, .form-check-label, .btn{
+                      font-size: 16px;
+                    }
+
+                    
+
+
+
+[type=checkbox][class*=filled-in]+label:after, [type=checkbox][class*=filled-in]+label:before {
+    content: "";
+    left: 0;
+    position: absolute;
+    -webkit-transition: border .25s,background-color .25s,width .2s .1s,height .2s .1s,top .2s .1s,left .2s .1s;
+    -o-transition: border .25s,background-color .25s,width .2s .1s,height .2s .1s,top .2s .1s,left .2s .1s;
+    transition: border .25s,background-color .25s,width .2s .1s,height .2s .1s,top .2s .1s,left .2s .1s;
+    z-index: 1;
+    border-style: solid;
+    border-width: 2px;
+}
+
+[type=checkbox]+label:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 17px;
+    height: 17px;
+    z-index: 0;
+    /* border: 1.5px solid #8a8a8a; */
+    -webkit-border-radius: 1px;
+    border-radius: 1px;
+    margin-top: 2px;
+    -webkit-transition: .2s;
+    -o-transition: .2s;
+    transition: .2s;
+    border-color: transparent;
+}
+
+[type=checkbox][class*=filled-in]+label:before {
+    /* -webkit-transform: rotateZ(37deg);
+    -ms-transform: rotate(37deg);
+    transform: rotateZ(37deg); */
+    -webkit-transform-origin: 100% 100%;
+    -ms-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+}
+
+
+[type="checkbox"][class*="filled-in"] + label::after {
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	height: 20px;
+	width: 20px;
+}
+
+
+[type=checkbox][class*=filled-in]:checked+label:before {
+    top: 0;
+    left: 1px;
+    width: 8px;
+    height: 13px;
+    border-color: transparent #fff #fff transparent;
+}
+
+[type=checkbox]:checked+label:before {
+    top: -4px;
+    left: -3px;
+    width: 12px;
+    height: 22px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: transparent #4285f4 #4285f4 transparent;
+    -webkit-transform: rotate(40deg);
+    -ms-transform: rotate(40deg);
+    transform: rotate(40deg);
+    -webkit-transform-origin: 100% 100%;
+    -ms-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+}
+[type="checkbox"][class*="filled-in"]:checked + label::after {
+	top: 0;
+	border-color: #a6c;
+	background-color: #a6c;
+	z-index: 0;
+}
+.checkbox-teal-filled [type="checkbox"][class*="filled-in"]:checked + label::after {
+	border-color: #009688;
+	background-color: #009688;
+}
+
+
+                  </style>
+  </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
@@ -315,8 +441,8 @@
                 </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="workouts.html">Workouts</a></li>
-              <li><a href="new_workout.html">New Workout</a></li>
+              <li><a href="new_workout_item.html">New Workout Item</a></li>
+              <li><a href="assign_workout.html">Assign Workout</a></li>
             </ul>
           </li>
   
@@ -385,7 +511,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1 style="display: inline-block;">
-            Workout
+            Assign Workout
       </h1>
 
     </section>
@@ -418,106 +544,119 @@
                                 <h4>Biceps</h4>
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <label class="name">
-                                            <input class="flat-red" type="checkbox"  name="dumble"> Dumble
-                                        </label>
+                                        <div class="form-check checkbox-teal-filled">
+                                          <input type="checkbox" name="Dumble" id="Dumble" class="filled-in form-check-input">
+                                          <label class="form-check-label" for="Dumble">Dumble</label>
+                                        </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <div class="input-group">
-                                            <label>
-                                                <input class="set-radio" type="radio" value="10*2" name="dumble-set"> 10*2
-                                            </label>
-                                            <label>
-                                                <input class="set-radio" type="radio" value="10*3" name="dumble-set"> 10*3
-                                            </label>
-                                            <label>
-                                                <input class="set-radio"type="radio" value="10*4" name="dumble-set"> 10*4
-                                            </label>
-                                            <label>
-                                                <input class="set-radio"type="radio" value="10*5" name="dumble-set"> 10*5
-                                            </label>
-                                            <label>
-                                                <input class="set-radio"type="radio" value="10*6" name="dumble-set"> 10*6
-                                            </label>
+                                        <!--Checkbox butons-->
+                                        <div class="btn-group" data-toggle="buttons">
+
+                                          <label class="btn btn-default form-check-label">
+                                              <input class="form-check-input set-radio" type="radio" autocomplete="off" name="Dumble-set" value="10*2"> 10*2
+                                          </label>
+                                          <label class="btn btn-default form-check-label">
+                                              <input class="form-check-input set-radio" type="radio" autocomplete="off" name="Dumble-set" value="10*3"> 10*3
+                                          </label>
+                                          <label class="btn btn-default form-check-label">
+                                              <input class="form-check-input set-radio" type="radio" autocomplete="off" name="Dumble-set" value="10*4"> 10*4
+                                          </label>
+                                          <label class="btn btn-default form-check-label">
+                                              <input class="form-check-input set-radio" type="radio" autocomplete="off" name="Dumble-set" value="10*5"> 10*5
+                                          </label>
+                                          <label class="btn btn-default form-check-label">
+                                              <input class="form-check-input set-radio" type="radio" autocomplete="off" name="Dumble-set" value="10*6"> 10*6
+                                          </label>
+
                                         </div>
+                                        <!--Checkbox butons-->
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <label class="name">
-                                            <input class="flat-red" type="checkbox"  name="somthing"> Something
-                                        </label>
+                                        <div class="form-check checkbox-teal-filled">
+                                          <input type="checkbox" name="Something" id="Something" class="filled-in form-check-input">
+                                          <label class="form-check-label" for="Something">Something</label>
+                                        </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <div class="input-group">
-                                            <label>
-                                                <input class="set-radio" type="radio" value="10*2" name="somthing-set"> 10*2
-                                            </label>
-                                            <label>
-                                                <input class="set-radio" type="radio" value="10*3" name="somthing-set"> 10*3
-                                            </label>
-                                            <label>
-                                                <input class="set-radio"type="radio" value="10*4" name="somthing-set"> 10*4
-                                            </label>
-                                            <label>
-                                                <input class="set-radio"type="radio" value="10*5" name="somthing-set"> 10*5
-                                            </label>
-                                            <label>
-                                                <input class="set-radio"type="radio" value="10*6" name="somthing-set"> 10*6
-                                            </label>
+                                        <!--Checkbox butons-->
+                                        <div class="btn-group" data-toggle="buttons">
+
+                                          <label class="btn btn-default form-check-label">
+                                              <input class="form-check-input set-radio" type="radio" autocomplete="off" name="Something-set" value="10*2"> 10*2
+                                          </label>
+                                          <label class="btn btn-default form-check-label">
+                                              <input class="form-check-input set-radio" type="radio" autocomplete="off" name="Something-set" value="10*3"> 10*3
+                                          </label>
+                                          <label class="btn btn-default form-check-label">
+                                              <input class="form-check-input set-radio" type="radio" autocomplete="off" name="Something-set" value="10*4"> 10*4
+                                          </label>
+                                          <label class="btn btn-default form-check-label">
+                                              <input class="form-check-input set-radio" type="radio" autocomplete="off" name="Something-set" value="10*5"> 10*5
+                                          </label>
+                                          <label class="btn btn-default form-check-label">
+                                              <input class="form-check-input set-radio" type="radio" autocomplete="off" name="Something-set" value="10*6"> 10*6
+                                          </label>
+
                                         </div>
+                                        <!--Checkbox butons-->
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <label class="name">
-                                            <input class="flat-red" type="checkbox"  name="anything"> Anything
-                                        </label>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="input-group">
-                                            <label>
-                                                <input class="set-radio" type="radio" value="10*2" name="anything-set"> 10*2
-                                            </label>
-                                            <label>
-                                                <input class="set-radio" type="radio" value="10*3" name="anything-set"> 10*3
-                                            </label>
-                                            <label>
-                                                <input class="set-radio"type="radio" value="10*4" name="anything-set"> 10*4
-                                            </label>
-                                            <label>
-                                                <input class="set-radio"type="radio" value="10*5" name="anything-set"> 10*5
-                                            </label>
-                                            <label>
-                                                <input class="set-radio"type="radio" value="10*6" name="anything-set"> 10*6
-                                            </label>
+                                        <div class="form-check checkbox-teal-filled">
+                                          <input type="checkbox" name="anything" id="anything" class="filled-in form-check-input">
+                                          <label class="form-check-label" for="anything">Anything</label>
                                         </div>
                                     </div>
+                                    <div class="col-md-8">
+                                        <!--Checkbox butons-->
+                                        <div class="btn-group" data-toggle="buttons">
+
+                                          <label class="btn btn-default form-check-label">
+                                              <input class="form-check-input set-radio" type="radio" autocomplete="off" name="anything-set" value="10*2"> 10*2
+                                          </label>
+                                          <label class="btn btn-default form-check-label">
+                                              <input class="form-check-input set-radio" type="radio" autocomplete="off" name="anything-set" value="10*3"> 10*3
+                                          </label>
+                                          <label class="btn btn-default form-check-label">
+                                              <input class="form-check-input set-radio" type="radio" autocomplete="off" name="anything-set" value="10*4"> 10*4
+                                          </label>
+                                          <label class="btn btn-default form-check-label">
+                                              <input class="form-check-input set-radio" type="radio" autocomplete="off" name="anything-set" value="10*5"> 10*5
+                                          </label>
+                                          <label class="btn btn-default form-check-label">
+                                              <input class="form-check-input set-radio" type="radio" autocomplete="off" name="anything-set" value="10*6"> 10*6
+                                          </label>
+
+                                        </div>
+                                        <!--Checkbox butons-->
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label>Follow</label>
-                                <div class="input-group">
-                                    <label>
-                                        <input class="flat-red" type="radio" value="10*2" name="follow"> 1 week
+                            <div style="padding-left:10px;" class="form-group">
+                                <label style="margin-right:10px;">Follow</label>
+                                
+                                <!--Radio butons-->
+                                <div class="btn-group" data-toggle="buttons">
+
+                                    <label class="btn btn-cyan btn-rounded active form-check-label">
+                                        <input class="form-check-input" type="radio" checked autocomplete="off" value="1 Week" name="follow"> 1 Week
                                     </label>
-                                    <label>
-                                        <input class="flat-red" type="radio" value="10*3" name="follow"> 2 week
+
+                                    <label class="btn btn-cyan btn-rounded form-check-label">
+                                        <input class="form-check-input" type="radio" autocomplete="off" value="2 Week" name="follow"> 2 Week
                                     </label>
-                                    <label>
-                                        <input class="flat-red"type="radio" value="10*4" name="follow"> 3 week
-                                    </label>
-                                    <label>
-                                        <input class="flat-red"type="radio" value="10*5" name="follow"> 4 week
-                                    </label>
-                                    <label>
-                                        <input class="flat-red"type="radio" value="10*6" name="follow"> 5 week
-                                    </label>
+
                                 </div>
+                                <!--Radio butons-->
+                                                
                             </div>
 
-                            <table class="table table-hover">
+                            <!-- <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
@@ -529,10 +668,25 @@
                                 <tbody id="tableBody">
                                     
                                 </tbody>
-                            </table>
+                            </table> -->
+                            <div style="padding: 10px;">
+                                <table id="workout-table" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Item</th>
+                                            <th scope="col">Set</th>
+                                            <th scope="col">Handle</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tableBody">
+                                    
+                                    </tbody>
+                                </table>
+                            </div>
                 
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-success"> <i class="fa fa-plus"></i> &nbsp; Add Workout</button>
+                                <button type="submit" class="btn btn-success"> <i class="fa fa-plus"></i> &nbsp; Assign</button>
                                 
                             </div>
                         </form>
@@ -543,7 +697,7 @@
           
         </div>
         <!-- /.col -->
-      </div>
+      </div>Workout
       <!-- /.row -->
     </section>
     <!-- /.content -->
@@ -566,8 +720,12 @@
 <!-- jQuery 3 -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+<!-- Popper -->
+<script src="dist/js/popper.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Material Bootstrap -->
+<script src="dist/js/mdb.min.js"></script>
 <!-- DataTables -->
 <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
@@ -604,6 +762,57 @@
     //     checkboxClass: 'icheckbox_flat-green',
     //     radioClass   : 'iradio_flat-green'
     // })
+
+    $('#workout-table').DataTable({
+      dom: 'Bfrtip',
+      bSort: false,
+      bFilter: false,
+      bPaginate: false,
+      bInfo: false,
+      buttons: [
+          {
+            extend: 'excel',
+            text: 'Excel',
+            exportOptions: {
+                columns: 'th:not(:last-child)'
+            }
+          },
+          {
+            extend: 'copy',
+            text: 'Copy',
+            exportOptions: {
+                columns: 'th:not(:last-child)'
+            }
+          },
+          {
+            extend: 'csv',
+            text: 'CSV',
+            exportOptions: {
+                columns: 'th:not(:last-child)'
+            }
+          },
+          {
+            extend: 'pdf',
+            text: 'PDF',
+            exportOptions: {
+                columns: 'th:not(:last-child)'
+            }
+          },
+          {
+            extend: 'print',
+            text: 'Print',
+            exportOptions: {
+                columns: 'th:not(:last-child)'
+            },
+            customize: function ( win ) {
+                $(win.document.body)
+                    .prepend(
+                        '<h4 style="position:absolute; right:0; bottom:0;">Developed by Microkodes</h4>'
+                    );
+            }
+          }
+      ]
+    });
 
     var items = [];
     var tbody = $('#tableBody');
