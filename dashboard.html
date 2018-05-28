@@ -62,7 +62,7 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition fixed skin-blue sidebar-mini">
 <div class="wrapper">
 
   <!-- Main Header -->
@@ -233,11 +233,12 @@ desired effect
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
 
-      <div class="gym-logo">
-        <img class="img-responsive" src="dist/img/logo.png" alt="">
-      </div>
+      
       <!-- sidebar: style can be found in sidebar.less -->
       <section class="sidebar">
+          <div class="gym-logo">
+              <img class="img-responsive" src="dist/img/logo.png" alt="">
+            </div>
   
   
         <!-- Sidebar Menu -->
@@ -472,7 +473,7 @@ desired effect
  
   <!-- Add the sidebar's background. This div must be placed
   immediately after the control sidebar -->
-  <div class="control-sidebar-bg"></div>
+  <!-- <div class="control-sidebar-bg"></div> -->
 </div>
 <!-- ./wrapper -->
 
@@ -505,7 +506,7 @@ desired effect
 <!-- Select2 -->
 <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
+<script src="dist/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <!-- Custom Script -->
